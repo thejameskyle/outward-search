@@ -6,7 +6,7 @@ const isSafeInteger = require('is-safe-integer');
 function outwardSearch/*:: <T> */(
   items /*: Array<T> */,
   start /*: number */,
-  callback /*: (item: T, index: number) => boolean */
+  checkMatch /*: (item: T, index: number) => boolean */
 ) /*: T | null */ {
   if (!items.length) {
     return null;
@@ -30,14 +30,14 @@ function outwardSearch/*:: <T> */(
 
     if (!hitMin) {
       let item = items[low];
-      let result = callback(item, low);
+      let result = checkMatch(item, low);
       if (!!result) return item;
       low--;
     }
 
     if (!hitMax) {
       let item = items[high];
-      let result = callback(item, high);
+      let result = checkMatch(item, high);
       if (!!result) return item;
       high++;
     }

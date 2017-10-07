@@ -34,11 +34,11 @@ item, you can use outward-search to do so efficiently.
 export default function outwardSearch<T>(
   items: Array<T>,
   start: number,
-  callback: (item: T, index: number) => boolean,
+  checkMatch: (item: T, index: number) => boolean,
 ): T | null;
 ```
 
-The `callback` is called on the `start` index then it works its way outwards to
+`checkMatch` is called on the `start` index then it works its way outwards to
 either end of the array.
 
 So with the starting index of `2` and an array with 8 items:
